@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<!--that becomes index.html -->
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title page-title></title>
+
+    <!-- Fav Icon -->
+    <!-- <link href="/{{favicon}}" rel="shortcut icon" type="image/x-icon"> -->
+
+    <link rel="stylesheet" href="beau.css">
+
+  </head>
+
+  <body>
+      <header id="page-header">
+        <span class="title">Babyfoot Dashboard</span>
+      </header>
+
+      <section id="page-content">
+        <section id="game-container">
+
+          <div id="game-creation">
+            <!-- newGameComponent goes here -->
+          </div>
+
+          <div id="game-list-container">
+          </div>
+
+        </section>
+
+        <section id="chat-container">
+        </section>
+
+      </section>
+
+    <noscript>
+      <div class="alert alert-warning">
+        <strong>This page requires JavaScript.</strong> Please enable it in your browser.
+      </div>
+    </noscript>
+
+    <!-- page script-->
+    <script type="text/javascript">
+     
+    </script>
+
+    <!--Easiest way enforce load order of dependencies is forcing synchronous loading -->
+    <script type="text/javascript" src="/socket.io/socket.io.js" ></script>
+
+    <script type="text/javascript" src="/appSockets.js" ></script>
+    <script type="text/javascript" src="/appHttpService.js"></script>
+
+    <script type="text/javascript" src="/appGameListComponent.js" ></script>
+    <script type="text/javascript" src="/appNewGameComponent.js" ></script>
+
+    <script type="text/javascript" src="/appFront.js" defer></script>
+    
+  </body>
+
+</html>

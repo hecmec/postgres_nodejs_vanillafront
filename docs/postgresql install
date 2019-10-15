@@ -1,0 +1,115 @@
+
+
+## postgres
+
+### install
+https://pgdash.io/blog/postgres-11-getting-started.html
+
+node-postgres pg.
+
+install dir
+/var/lib/postgresql/11/main 
+
+### start
+
+
+    su postgres -c 'pg_ctl start -D /usr/local/pgsql/data -l serverlog'
+
+    sudo systemctl start postgresql@11-main
+    sudo systemctl stop postgresql@11-main
+
+    sudo systemctl enable postgresql.service
+    sudo systemctl status postgresql.service
+
+    sudo systemctl restart postgresql
+
+### Change pwd
+
+    sudo passwd postgres
+
+### Using psql
+
+#### Connect and basic cmd
+
+https://jazstudios.blogspot.com/2010/06/postgresql-login-commands.html
+
+admin login
+    sudo -u postgres psql
+
+get admin tables
+    select * from pg_tables where tableowner = 'postgres';
+
+List databases from within a pg shell:
+    \l
+
+Switch postgres database within admin login shell:
+\connect babyfoot
+
+Describe a table:
+\d babyfoot.game
+
+Show all tables:
+\dt
+
+List all Schemas:
+\dn
+
+List all users:
+\du
+
+#### create a new user
+
+    create user babyfoot_user password 'toto123';
+
+### create a new db
+
+    create database babyfoot owner babyfoot_user;
+
+    create database babyfoot_test owner babyfoot_user;
+
+
+### show pg processes
+
+    ps axfww | grep postgres
+
+### table
+
+    DROP DATABASE babyfoot;
+
+    CREATE DATABASE babyfoot
+      WITH OWNER = babyfoot_user
+          ENCODING = 'UTF8'
+          TABLESPACE = pg_default
+          LC_COLLATE = 'en_US.UTF-8'
+          LC_CTYPE = 'en_US.UTF-8'
+          CONNECTION LIMIT = -1;
+
+
+
+
+    -- DROP TABLE game;
+
+CREATE TABLE game
+(
+  id serial PRIMARY KEY,
+  title VARCHAR(200) NOT NULL,
+  team1 VARCHAR(200),
+  team2 VARCHAR(200),
+  points_team1 integer,
+  points_team2 integer,
+  is_finished boolean DEFAULT false,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  finished_at timestamp without time zone,
+  deleted_at timestamp without time zone
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE game
+  OWNER TO babyfoot_user;
+
+
+
+INSERT INTO game (title, team1, team2) values('Test1','toto', 'titi');
+INSERT INTO game (title, team1, team2) values('Test2','toto', 'tata');
+INSERT INTO game (title, team1, team2) values('Test3','titi', 'tutu');

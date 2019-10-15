@@ -1,0 +1,25 @@
+{
+  "name": "babyfoot-vanilla",
+  "version": "0.1.0",
+  "description": "a little babyfoot management realtime app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "start": "nodemon app.js"
+  },
+  "author": "jpe",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "pg": "^7.12.1",
+    "serve-static": "^1.14.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1",
+    "nodemon": "^1.19.3",
+    "should": "^13.2.3"
+  }
+}
