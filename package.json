@@ -15,7 +15,7 @@
     "morgan": "^1.9.1",
     "pg": "^7.12.1",
     "serve-static": "^1.14.1",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.4.0"
   },
   "devDependencies": {
     "mocha": "^6.2.1",
